@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Seller Manager</title>
+</head>
+<body>
+<div align="center">
+	<h1>Seller Manager</h1>
+	<a href="new">Create New Seller</a>
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>Seller Id</th>
+				<th>First Name</th>
+				<th>Second Name</th>
+				<th>Phone Number</th>
+				<th>Address</th>
+				<th>E-mail</th>
+				<th>Joined Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="seller : ${listSellers}">
+				<td th:text="${seller.id}">Seller Id</td>
+				<td th:text="${seller.fname}">First Name</td>
+				<td th:text="${seller.sname}">Second Name</td>
+				<td th:text="${seller.phoneNumber}">Phone Number</td>
+				<td th:text="${seller.address}">Address</td>
+				<td th:text="${seller.email}">E-mail</td>
+				<td th:text="${seller.joinedDate}">Joined Date</td>
+				<td>
+					<a th:href="@{'/edit/' + ${seller.id}}">Edit</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/delete/' + ${seller.id}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
